@@ -1,20 +1,20 @@
-const repository = require('../managers/taskManager')
+const repository = require('../managers/userManager')
 
-const getAllTask = async () => {
-  const result = await repository.getAllTask()
+const getAllUser = async () => {
+  const result = await repository.getAllUser()
   return result
 }
 
 const getById = async (id) => {
-  const response = await repository.getByIdTask(id)
+  const response = await repository.getByIdUser(id)
   let result = {}
   result.message = response
   result.status = Array.isArray(response)
   return result
 }
 
-const postNewTask = async (body) => {
-  const response = await repository.postTask(body)
+const postNewUser = async (body) => {
+  const response = await repository.postUser(body)
   let result = {}
   if (response.sqlMessage) {
     result.message = response.sqlMessage
@@ -27,19 +27,19 @@ const postNewTask = async (body) => {
 }
 
 const putById = async (id, body) => {
-  const response = await repository.putTask(id, body)
+  const response = await repository.putUser(id, body)
   return response
 }
 
 const deleteById = async (id) => {
-  const response = await repository.deleteTask(id)
+  const response = await repository.deleteUser(id)
   return response
 }
 
 module.exports = {
-  getAllTask,
+  getAllUser,
   getById,
-  postNewTask,
+  postNewUser,
   deleteById,
   putById
 }

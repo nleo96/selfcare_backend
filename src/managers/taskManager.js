@@ -1,7 +1,6 @@
 const { knex } = require('../database')
 
 const postTask = async (entity) => {
-  // let result
   return await knex("tasks")
     .insert(entity)
     .catch((error) => {
@@ -53,7 +52,6 @@ const deleteTask = async (id) => {
       return "Ok"
   })
 }
-
 
 module.exports = {
   postTask,

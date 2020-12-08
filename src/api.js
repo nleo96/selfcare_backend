@@ -3,6 +3,8 @@ const config = require( 'config')
 const  bodyParser = require( 'body-parser')
 
 const taskWebService = require ('./controllers/taskController')
+const userWebService = require ('./controllers/userController')
+const userHasTaskWebService = require ('./controllers/usersHasTasksController')
 
 const apiPort = config.get('port')
 const api = express()
@@ -13,6 +15,8 @@ exports.start = () => {
   api.use(bodyParser.json())
   api.use(bodyParser.urlencoded({ extended: true }))
   api.use('/', taskWebService)
+  api.use('/', userWebService)
+  api.use('/', userHasTaskWebService)
 
   server = api.listen(
     apiPort,
